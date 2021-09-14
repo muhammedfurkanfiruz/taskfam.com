@@ -18,6 +18,6 @@ function handler9()  {
     }
 console.log(handler9());
 console.log(vocabEnglish);
-
+alert("alperen")
 
             
