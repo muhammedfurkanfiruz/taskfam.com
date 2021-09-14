@@ -1,0 +1,3 @@
+[x] get input from value
+[x] push value to array
+[]  bir tane ul listemiz olacak, yukardaki arrayin içindekiler, ul içinde <li> içinde bastırılacak. alt alta oalcak.
