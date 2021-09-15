@@ -2,3 +2,6 @@
 [x] push value to array
 []  bir tane ul listemiz olacak, yukardaki arrayin içindekiler, ul içinde <li> içinde bastırılacak. alt alta oalcak. 
     (araştırma yolu > google[vanilla js ul li foreach])
+
+
+    
