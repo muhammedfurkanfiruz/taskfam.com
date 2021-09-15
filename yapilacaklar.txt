@@ -1,7 +1,8 @@
 [x] get input from value
 [x] push value to array
-[]  bir tane ul listemiz olacak, yukardaki arrayin içindekiler, ul içinde <li> içinde bastırılacak. alt alta oalcak. 
+[x]  bir tane ul listemiz olacak, yukardaki arrayin içindekiler, ul içinde <li> içinde bastırılacak. alt alta oalcak. 
     (araştırma yolu > google[vanilla js ul li foreach])
+[]  inputtan veriyi arraya çekmiştik her butona basışta, şimdi arraya her veri yüklendiğinde, ul yi güncelliyip yeni veriyi ul içine li olarak eklicez.
 
 
     
