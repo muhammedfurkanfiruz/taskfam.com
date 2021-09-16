@@ -1,8 +1,8 @@
 const todoList = [];
 
 function getValueFromInput() {
-    let myInput = document.getElementById('exampleFormControlTextarea1');
-    let val = myInput.value;
+    let todoInput = document.getElementById('todoInput');
+    let val = todoInput.value;
     todoList.push(val)
     let list = document.getElementById('todoList')
     let li = document.createElement("li");
@@ -10,8 +10,7 @@ function getValueFromInput() {
     list.appendChild(li);
 
     console.log(todoList);
-    myInput.value = ""; //input clear
-    return todoList;
+    todoInput.value = ""; //input clear
 }
 
 //saklanan veriyi sonradan basmak için kullancaz
