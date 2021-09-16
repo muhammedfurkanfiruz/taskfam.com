@@ -1,29 +1,26 @@
-// bosDizi = [];
-// function doFunction(){
-  
-//     const val = document.getElementById('exampleFormControlTextarea1').value;
-//     bosDizi.push(val)
-//     console.log(bosDizi);
-//     return bosDizi;
+const todoList = [];
 
- 
-// }
+function getValueFromInput() {
+    let myInput = document.getElementById('exampleFormControlTextarea1');
+    let val = myInput.value;
+    todoList.push(val)
+    let list = document.getElementById('todoList')
+    let li = document.createElement("li");
+    li.appendChild(document.createTextNode(val));
+    list.appendChild(li);
 
-const isimler = ['alpiş baba ', 'meheme', 'furkan', 'saidoo', 'umuut'];  // ı just vreated an array 
+    console.log(todoList);
+    myInput.value = ""; //input clear
+    return todoList;
+}
 
-let html = ''; // setup the html tags
+//saklanan veriyi sonradan basmak için kullancaz
+// let html = '';
 
-isimler.forEach(function(isim){
-    html += '<li>' + isim + '</li>';      //with this function we get all value of the array and add li tag for each return(step)
-    
+// todoList.forEach(function (name) {
+//     html += '<li>' + name + '</li>';
+// });
 
-});
- 
-    html = (`<ul>  ${html}  <ul> `); // we putt the li tags in to the ul tags ı prefered to use template literal structure
-
-    console.log(html);
-    document.getElementById('isimYaz').innerHTML = html   // by using inner html we send the unordered list to the html 
-                                                          // because we wanna see the result on the browser
-
-
-            
+// html = (`<ul>  ${html}  <ul> `);
+// console.log(html);
+// document.getElementById('name_ıd').innerHTML = html
