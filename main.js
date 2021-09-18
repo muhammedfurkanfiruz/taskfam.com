@@ -5,7 +5,7 @@ let submitBtn = document.getElementById("submitBtn");
 function getValueFromInput() {
     let val = todoInput.value;
     if (val == '')  {
-        alert("empty" ); // alert
+        toastr.warning("Boş ekleme yapılamaz!");
     } 
     if(val !== ''){
     todoList.push(val)
