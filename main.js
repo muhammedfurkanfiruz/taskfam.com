@@ -7,12 +7,14 @@ function getValueFromInput() {
     if (val == '')  {
         toastr.warning("Boş ekleme yapılamaz!");
     } 
+    
     if(val !== ''){
     todoList.push(val)
     let list = document.getElementById('todoList');
     let li = document.createElement("li");
     li.appendChild(document.createTextNode(val));
     list.appendChild(li);
+    toastr.success( 'Ekleme başarılı ! ');
     todoInput.value = ""; //input clear
     console.log(todoList);
     }
