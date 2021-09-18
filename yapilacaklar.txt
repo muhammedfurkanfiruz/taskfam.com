@@ -3,8 +3,8 @@
 [x]  bir tane ul listemiz olacak, yukardaki arrayin içindekiler, ul içinde <li> içinde bastırılacak. alt alta oalcak. 
     (araştırma yolu > google[vanilla js ul li foreach])
 [x]  inputtan veriyi arraya çekmiştik her butona basışta, şimdi arraya her veri yüklendiğinde, ul yi güncelliyip yeni veriyi ul içine li olarak eklicez.
-[] input boşsa ekleme çalışmasın, alert versin.
-[] textarea yi inputa çeivrelim ve entera basınca da add çalışsın
+[x] input boşsa ekleme çalışmasın, alert versin.
+[x] textarea yi inputa çeivrelim ve entera basınca da add çalışsın
 
 
     
