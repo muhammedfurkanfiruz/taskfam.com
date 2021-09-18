@@ -1,11 +1,16 @@
 [x] get input from value
 [x] push value to array
-[x]  bir tane ul listemiz olacak, yukardaki arrayin içindekiler, ul içinde <li> içinde bastırılacak. alt alta oalcak. 
+[x] bir tane ul listemiz olacak, yukardaki arrayin içindekiler, ul içinde <li> içinde bastırılacak. alt alta oalcak. 
     (araştırma yolu > google[vanilla js ul li foreach])
-[x]  inputtan veriyi arraya çekmiştik her butona basışta, şimdi arraya her veri yüklendiğinde, ul yi güncelliyip yeni veriyi ul içine li olarak eklicez.
+[x] inputtan veriyi arraya çekmiştik her butona basışta, şimdi arraya her veri yüklendiğinde, ul yi güncelliyip yeni veriyi ul içine li olarak eklicez.
 [x] input boşsa ekleme çalışmasın, alert versin.
 [x] textarea yi inputa çeivrelim ve entera basınca da add çalışsın
-[]
- 
+[]  her eklenen todo(li) localStorage içinde, tasks arrayı içine kaydedilecek. 
+[]  üstteki maddeden sonra > proje ilk açılırken, localstorage içinde tasks adı altında itemler var mı
+    kontrol edilecek, var ise sayfadaki ul içine render edilecek(foreach gibimsi) yok ise bişey yapılmıcak.
 
+    🔍ARAMA KEYWORDS🔍
+    stackoverflow > todolist localstorage
+                    add item to localstorage
+                    get item to localstorage
     
