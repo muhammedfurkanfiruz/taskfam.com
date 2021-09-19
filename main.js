@@ -50,8 +50,8 @@ function getLocalStorage(){
 
    let html = '';
 
-todoList.forEach(function (name) {
-    html += '<li>' + name + '</li>';
+todoList.forEach(function (todo) {
+    html += '<li>' + todo.text + '</li>';
     return html;
 
 } ) ;
