@@ -20,10 +20,11 @@ function getValueFromInput() {
     toastr.success( 'Ekleme başarılı ! ');
     todoInput.value = ""; //input clear
     console.log(todoList);
- 
+    getLocalStorage();
     }
   
 }
+
 
 
 
@@ -39,6 +40,8 @@ function setLocalStorage(){
     localStorage.setItem('TaskList', JSON.stringify(todoList)); // setting the data to the local storage
   
 }
+
+
 function getLocalStorage(){
 
  
@@ -51,16 +54,36 @@ function getLocalStorage(){
    let html = '';
 
 todoList.forEach(function (todo) {
-    html += '<li id="'+todo.id + '">' + todo.text + '</li>';
+    html +=(`<li id="${todo.id}">  <button id="${todo.id}" class="btnClass">  ID Göster </button> ${todo.text}  </li>`)
+   // html += "<li id="+todo.id + ">"  +  "<button  id="+todo.id +" + "onclick=showId();>"  + "Id göster" +  "</button>" + todo.text + "</li>";
     return html;
 
-} ) ;
+} );
 
 
 //html = (`<ul>  ${html}  <ul> `);
 console.log(html);
-document.getElementById('todoList').innerHTML = html
-}}
+document.getElementById('todoList').innerHTML = html  
+showFunc();
+}
+
+}
+
+
+function showFunc() {
+let buttons = document.querySelectorAll('.btnClass');
+buttons.forEach(function (button){
+    button.addEventListener('click', callback);
+
+})
+ function callback(e) {
+     console.log(e.target.id); // o butona tıkladığımızda o butonun tamamını konsola basar..
+
+
+ }
+
+
+}
 
 
 
