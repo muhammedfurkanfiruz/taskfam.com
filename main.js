@@ -51,7 +51,7 @@ function getLocalStorage(){
    let html = '';
 
 todoList.forEach(function (todo) {
-    html += '<li>' + todo.text + '</li>';
+    html += '<li id="'+todo.id + '">' + todo.text + '</li>';
     return html;
 
 } ) ;
