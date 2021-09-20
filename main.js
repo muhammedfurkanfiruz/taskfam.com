@@ -19,7 +19,6 @@ function getValueFromInput() {
     list.appendChild(li);
     toastr.success( 'Ekleme başarılı ! ');
     todoInput.value = ""; //input clear
-    console.log(todoList);
     getLocalStorage();
     }
   
@@ -49,7 +48,6 @@ function getLocalStorage(){
    if(gettingval !== null ){
    let veri = JSON.parse(gettingval)
    todoList = veri 
-   console.log(todoList);
 
    let html = '';
 
@@ -62,7 +60,6 @@ todoList.forEach(function (todo) {
 
 
 //html = (`<ul>  ${html}  <ul> `);
-console.log(html);
 document.getElementById('todoList').innerHTML = html  
 showFunc();
 }
@@ -78,8 +75,6 @@ buttons.forEach(function (button){
 })
  function callback(e) {
      console.log(e.target.id); // o butona tıkladığımızda o butonun tamamını konsola basar..
-
-
  }
 
 
