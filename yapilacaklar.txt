@@ -9,12 +9,6 @@
 [x]  üstteki maddeden sonra > proje ilk açılırken, localstorage içinde tasks adı altında itemler var mı
     kontrol edilecek, var ise sayfadaki ul içine render edilecek(foreach gibimsi) yok ise bişey yapılmıcak.
 
-    🔍ARAMA KEYWORDS🔍
-    stackoverflow > todolist localstorage
-                    add item to localstorage
-                    get item to localstorage
 [x] id göster butonunu ( sil butonu yap) > 
-oradan gelend id'yi kullanarak:
-     arrayın içindeki o objeyi sil, 
-     yeni arrayi local storage kaydet,
-     ul yi de güncelle (li yi o id ile seçip htmlden sil)
+[]  taskin üstüne tıklanınca input o değer ile gelecek, veriyi değiştirip kaydedince o değeri anladın sen.
+    {https://stackoverflow.com/questions/54125062/javascript-editing-a-list-item/54125361}
