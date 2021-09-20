@@ -13,7 +13,8 @@
     stackoverflow > todolist localstorage
                     add item to localstorage
                     get item to localstorage
-[x] id göster butonunu ( sil butonu yap) > oradan gelend id'yi kullanarak:
+[x] id göster butonunu ( sil butonu yap) > 
+oradan gelend id'yi kullanarak:
      arrayın içindeki o objeyi sil, 
      yeni arrayi local storage kaydet,
      ul yi de güncelle (li yi o id ile seçip htmlden sil)
