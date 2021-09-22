@@ -20,7 +20,7 @@ function getValueFromInput() {
         toastr.success('Ekleme başarılı ! ');
         todoInput.value = ""; //input clear
         getLocalStorage();
-       
+
     }
 
 }
@@ -38,7 +38,7 @@ todoInput.addEventListener("keyup", function (event) { //add todo with enter key
 //  var data = [ {'Id' : 0,'text' : 'Alperen', },{  'Id' : 5,'text' : 'Alpiş', }];
 function setLocalStorage() {
     localStorage.setItem('TaskList', JSON.stringify(todoList)); // setting the data to the local storage
-    
+
 }
 
 
@@ -66,7 +66,7 @@ function getLocalStorage() {
         //html = (`<ul>  ${html}  <ul> `);
         document.getElementById('todoList').innerHTML = html
         removeItem();
-       
+
     }
 
 }
@@ -81,30 +81,20 @@ function removeItem() {
         let itemId = e.target.id;
         const removeIndex = todoList.findIndex(item => item.id === (itemId)); //arrayden silme
         todoList.splice(removeIndex, 1);
-
         document.getElementById(itemId).remove();//html'den silme
-
         setLocalStorage();
-        
     }
-
- 
 }
 
-function updateItem(event) {
+function updateItem(event) { 
     let id = event.target.id;
-    let achived = document.getElementById('text' + id )
-    let updated  = event.target.value
+    let achived = document.getElementById('text' + id)
+    let updated = event.target.value // inputtan gelen veri
     achived.innerText = updated
-    const arrayItem = todoList.findIndex(item => item.id === (id)); 
+    const arrayItem = todoList.findIndex(item => item.id === (id)); // arrayi burada güncelledik
     todoList[arrayItem].text = updated;
-   
-
-  
-
-
     setLocalStorage();
-   }
+}
 
 
 
