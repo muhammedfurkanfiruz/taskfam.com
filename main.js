@@ -38,7 +38,7 @@ todoInput.addEventListener("keyup", function (event) { //add todo with enter key
 //  var data = [ {'Id' : 0,'text' : 'Alperen', },{  'Id' : 5,'text' : 'Alpiş', }];
 function setLocalStorage() {
     localStorage.setItem('TaskList', JSON.stringify(todoList)); // setting the data to the local storage
-
+    
 }
 
 
@@ -54,8 +54,8 @@ function getLocalStorage() {
             html += (` 
             <li id="${todo.id}">  
                 <button id="${todo.id}" class="btnClass">Sil</button> 
-                 ${todo.text} 
-                 <input id="${todo.id}" value="${todo.text}" class="form-control" onKeyPress=updateItem(event)  />  
+                <span id="text${todo.id}">${todo.text} </span>
+                 <input id="${todo.id}" value="${todo.text}" class="form-control" onKeyUp=updateItem(event)  />  
             </li> `)
             // html += "<li id="+todo.id + ">"  +  "<button  id="+todo.id +" + "onclick=showId();>"  + "Id göster" +  "</button>" + todo.text + "</li>";
             console.log(todoList);
@@ -92,8 +92,18 @@ function removeItem() {
 }
 
 function updateItem(event) {
+    let id = event.target.id;
+    let achived = document.getElementById('text' + id )
     let updated  = event.target.value
-    console.log(updated);
+    achived.innerText = updated
+    const arrayItem = todoList.findIndex(item => item.id === (id)); 
+    todoList[arrayItem].text = updated;
+   
+
+  
+
+
+    setLocalStorage();
    }
 
 
