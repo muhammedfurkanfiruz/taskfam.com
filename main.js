@@ -55,7 +55,7 @@ function getLocalStorage() {
             <li id="${todo.id}">  
                 <button id="${todo.id}" class="btnClass">Sil</button> 
                  ${todo.text} 
-                 <input id="${todo.id}" value= "${todo.text}"  class="form-control"/>  
+                 <input id="${todo.id}" value="${todo.text}" class="form-control" onKeyPress=updateItem(event)  />  
             </li> `)
             // html += "<li id="+todo.id + ">"  +  "<button  id="+todo.id +" + "onclick=showId();>"  + "Id göster" +  "</button>" + todo.text + "</li>";
             console.log(todoList);
@@ -68,7 +68,7 @@ function getLocalStorage() {
         removeItem();
        
     }
-  
+
 }
 
 
@@ -91,14 +91,10 @@ function removeItem() {
  
 }
 
-
-
-
-
-
-
-
-
+function updateItem(event) {
+    let updated  = event.target.value
+    console.log(updated);
+   }
 
 
 

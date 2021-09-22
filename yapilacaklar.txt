@@ -10,5 +10,9 @@
     kontrol edilecek, var ise sayfadaki ul içine render edilecek(foreach gibimsi) yok ise bişey yapılmıcak.
 
 [x] id göster butonunu ( sil butonu yap) > 
-[]  taskin üstüne tıklanınca input o değer ile gelecek, veriyi değiştirip kaydedince o değeri anladın sen.
+[x]  taskin üstüne tıklanınca input o değer ile gelecek, veriyi değiştirip kaydedince o değeri anladın sen.
     {https://stackoverflow.com/questions/54125062/javascript-editing-a-list-item/54125361}
+
+[]bir func yaz > ( updatetoDo ) > bu functionu bu inputlara vericeksin 
+inputlara her tuş basıldığında bu function çalışcak.
+[]inputun value sini console yazdırsın 
