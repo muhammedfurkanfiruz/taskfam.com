@@ -20,6 +20,7 @@ function getValueFromInput() {
         toastr.success('Ekleme başarılı ! ');
         todoInput.value = ""; //input clear
         getLocalStorage();
+       
     }
 
 }
@@ -50,7 +51,12 @@ function getLocalStorage() {
         let html = '';
 
         todoList.forEach(function (todo) {
-            html += (`<li id="${todo.id}">  <button id="${todo.id}" class="btnClass">Sil</button> ${todo.text}  </li>`)
+            html += (` 
+            <li id="${todo.id}">  
+                <button id="${todo.id}" class="btnClass">Sil</button> 
+                 ${todo.text} 
+                 <input id="${todo.id}" value= "${todo.text}"  class="form-control"/>  
+            </li> `)
             // html += "<li id="+todo.id + ">"  +  "<button  id="+todo.id +" + "onclick=showId();>"  + "Id göster" +  "</button>" + todo.text + "</li>";
             console.log(todoList);
             return html;
@@ -60,9 +66,11 @@ function getLocalStorage() {
         //html = (`<ul>  ${html}  <ul> `);
         document.getElementById('todoList').innerHTML = html
         removeItem();
+       
     }
-
+  
 }
+
 
 function removeItem() {
     let buttons = document.querySelectorAll('.btnClass');
@@ -77,9 +85,10 @@ function removeItem() {
         document.getElementById(itemId).remove();//html'den silme
 
         setLocalStorage();
+        
     }
 
-
+ 
 }
 
 
