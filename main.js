@@ -33,6 +33,7 @@ todoInput.addEventListener("keyup", function (event) {
 //  var data = [ {'Id' : 0,'text' : 'Alperen', },{  'Id' : 5,'text' : 'Alpiş', }];
 function setLocalStorage() {
   localStorage.setItem("TaskList", JSON.stringify(todoList)); // setting the data to the local storage
+  restartHideFunction()
 }
 
 function getLocalStorage() {
@@ -86,8 +87,27 @@ spn.style.display= "none";
 let node = document.querySelector(`[data-access="input${id}"]`);
 node.classList.remove('d-none');
 }
-document.body.addEventListener('click', function(){
-let inpt = document.getElementsByClassName('inputClass');
-console.log(inpt);
-inpt.style.display = "block";
-}, true); 
+
+function hideInput(event){
+  let id =  event.target.id;
+  let spn = document.getElementById('text'+id)
+  let node = document.querySelector(`[data-access="input${id}"]`);
+  spn.style.display= "block";
+  node.classList.add('d-none');
+  }
+
+  
+function restartHideFunction(){
+  var classname = document.getElementsByClassName("inputClass");
+
+  for (i = 0; i < classname.length; i++) {
+    classname[i].addEventListener('keyup', function(event) {
+       event.preventDefault();
+       if (event.key === "Enter") {
+        hideInput(event)
+      }
+    });
+  }
+}
+
+restartHideFunction();
