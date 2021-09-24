@@ -95,7 +95,7 @@ function updateItem(event) {
     todoList[arrayItem].text = updated;
     setLocalStorage();
 }
-
+console.log('lşdgkgkl');
 
 
 
