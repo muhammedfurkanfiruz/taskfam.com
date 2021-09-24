@@ -48,8 +48,8 @@ function getLocalStorage() {
             <li id="${todo.id}">  
                 <span id="text${todo.id}">${todo.text} </span>
                 <button onclick="removeItem(event)" id="${todo.id}" class="btn btn-danger">Sil</button> 
-                <button id="${todo.id}" class="btn btn-primary"> <i class="far fa-edit"></i></button>
-                <input id="${todo.id}" value="${todo.text}" class="form-control" onKeyUp=updateItem(event)  />  
+                <button id="${todo.id}" class="btn btn-primary" onclick="showEditInput(event)"> <i class="far fa-edit icon" ></i></button>
+                <input id="${todo.id}" data-access="input${todo.id}" value="${todo.text}" class="form-control d-none inputClass" onKeyUp=updateItem(event)  />  
             </li> `;
       // html += "<li id="+todo.id + ">"  +  "<button  id="+todo.id +" + "onclick=showId();>"  + "Id göster" +  "</button>" + todo.text + "</li>";
       console.log(todoList);
@@ -71,10 +71,23 @@ function removeItem(event) {
 function updateItem(event) {
   let id = event.target.id;
   let achived = document.getElementById("text" + id);
+  console.log(id);
   let updated = event.target.value; // inputtan gelen veri
   achived.innerText = updated;
   const arrayItem = todoList.findIndex((item) => item.id === id); // arrayi burada güncelledik
   todoList[arrayItem].text = updated;
   setLocalStorage();
 }
-console.log("lşdgkgkl");
+
+function showEditInput(event){
+let id =  event.target.id;
+let spn = document.getElementById('text'+id)
+spn.style.display= "none";
+let node = document.querySelector(`[data-access="input${id}"]`);
+node.classList.remove('d-none');
+}
+document.body.addEventListener('click', function(){
+let inpt = document.getElementsByClassName('inputClass');
+console.log(inpt);
+inpt.style.display = "block";
+}, true); 
