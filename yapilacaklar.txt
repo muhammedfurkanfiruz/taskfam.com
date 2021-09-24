@@ -13,6 +13,8 @@
 [x]  taskin üstüne tıklanınca input o değer ile gelecek, veriyi değiştirip kaydedince o değeri anladın sen.
     {https://stackoverflow.com/questions/54125062/javascript-editing-a-list-item/54125361}
 
-[]bir func yaz > ( updatetoDo ) > bu functionu bu inputlara vericeksin 
+[x] bir func yaz > ( updatetoDo ) > bu functionu bu inputlara vericeksin 
 inputlara her tuş basıldığında bu function çalışcak.
-[]inputun value sini console yazdırsın 
+[x] inputun value sini console yazdırsın 
+[] input açıldığında(showEditInput) edit butonunu display none yap, yerine tamamla yeşil(bootstrap) içinde ok işareti olan (fontawesome)
+   bir buton ekle > bu butona da hideInput(event) ver
