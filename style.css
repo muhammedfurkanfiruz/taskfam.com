@@ -1,3 +1,17 @@
 .icon{
     pointer-events: none;
 }
+
+.todo-li{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.todo-btn{
+    margin-left: 5px;
+}
+
+.inputClass{
+    width: 50%;
+}

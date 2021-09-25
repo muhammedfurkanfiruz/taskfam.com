@@ -46,12 +46,12 @@ function getLocalStorage() {
 
     todoList.forEach(function (todo) {
       html += ` 
-            <li id="${todo.id}">  
+            <li class="todo-li" id="${todo.id}">  
                 <span id="text${todo.id}">${todo.text} </span>
-                <button onclick="removeItem(event)" id="${todo.id}" class="btn btn-danger">Sil</button> 
-                <button id="${todo.id}" data-access="edit${todo.id}" class="btn btn-primary" onclick="showEditInput(event)"> <i class="far fa-edit icon " ></i></button>
                 <input id="${todo.id}" data-access="input${todo.id}" value="${todo.text}" class="form-control d-none inputClass" onKeyUp=updateItem(event)  />  
-                <button id="${todo.id}" data-access="check${todo.id}" onclick="hideInput(event)" type="button" class="btn btn-success"><i class="fas fa-check-circle icon"></i></button>
+                <button onclick="removeItem(event)" id="${todo.id}" class="btn btn-danger todo-btn">Sil</button> 
+                <button id="${todo.id}" data-access="edit${todo.id}" class="btn btn-primary todo-btn" onclick="showEditInput(event)"> <i class="far fa-edit icon " ></i></button>
+                <button id="${todo.id}" data-access="check${todo.id}" onclick="hideInput(event)" type="button" class="btn btn-success d-none todo-btn"><i class="fas fa-check-circle icon"></i></button>
                 </li> `;
       // html += "<li id="+todo.id + ">"  +  "<button  id="+todo.id +" + "onclick=showId();>"  + "Id göster" +  "</button>" + todo.text + "</li>";
       console.log(todoList);
@@ -90,7 +90,7 @@ node.classList.remove('d-none');
 let edit = document.querySelector(`[data-access="edit${id}"]`);
 edit.style.display= "none";
 let check =document.querySelector(`[data-access="check${id}"]`);
-check.style.display= "block";
+check.classList.remove('d-none');
 }
 
 function hideInput(event){
@@ -101,10 +101,10 @@ function hideInput(event){
   let node = document.querySelector(`[data-access="input${id}"]`);
   spn.style.display= "block";
   node.classList.add('d-none');
-  let check = document.querySelector(`[data-access="check${id}"]`);
-  check.style.display= "none";
   let edit = document.querySelector(`[data-access="edit${id}"]`);
   edit.style.display= "block";
+  let check = document.querySelector(`[data-access="check${id}"]`);
+  check.classList.add('d-none');
   }
 //   function check (event) {
    
