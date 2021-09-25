@@ -51,7 +51,7 @@ function getLocalStorage() {
                 <button onclick="removeItem(event)" id="${todo.id}" class="btn btn-danger">Sil</button> 
                 <button id="${todo.id}" data-access="edit${todo.id}" class="btn btn-primary" onclick="showEditInput(event)"> <i class="far fa-edit icon " ></i></button>
                 <input id="${todo.id}" data-access="input${todo.id}" value="${todo.text}" class="form-control d-none inputClass" onKeyUp=updateItem(event)  />  
-                <button id="checkher" onclick="hideInput(event)" type="button" class="btn btn-success"><i class="fas fa-check-circle"></i></button>
+                <button id="${todo.id}" data-access="check${todo.id}" onclick="hideInput(event)" type="button" class="btn btn-success"><i class="fas fa-check-circle"></i></button>
                 </li> `;
       // html += "<li id="+todo.id + ">"  +  "<button  id="+todo.id +" + "onclick=showId();>"  + "Id göster" +  "</button>" + todo.text + "</li>";
       console.log(todoList);
@@ -89,17 +89,19 @@ let node = document.querySelector(`[data-access="input${id}"]`);
 node.classList.remove('d-none');
 let edit = document.querySelector(`[data-access="edit${id}"]`);
 edit.style.display= "none";
-let check = document.getElementById('checker')
+let check =document.querySelector(`[data-access="edit${id}"]`);
 check.style.display= "block";
 }
 
 function hideInput(event){
   let id =  event.target.id;
+  console.log(id);
   let spn = document.getElementById('text'+id)
+  console.log(spn);
   let node = document.querySelector(`[data-access="input${id}"]`);
   spn.style.display= "block";
   node.classList.add('d-none');
-  let check = document.getElementById('checker')
+  let check = document.querySelector(`[data-access="check${id}"]`);
   check.style.display= "none";
   let edit = document.querySelector(`[data-access="edit${id}"]`);
   edit.style.display= "block";
