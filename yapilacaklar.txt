@@ -16,5 +16,6 @@
 [x] bir func yaz > ( updatetoDo ) > bu functionu bu inputlara vericeksin 
 inputlara her tuş basıldığında bu function çalışcak.
 [x] inputun value sini console yazdırsın 
-[] input açıldığında(showEditInput) edit butonunu display none yap, yerine tamamla yeşil(bootstrap) içinde ok işareti olan (fontawesome)
+[x] input açıldığında(showEditInput) edit butonunu display none yap, yerine tamamla yeşil(bootstrap) içinde ok işareti olan (fontawesome)
    bir buton ekle > bu butona da hideInput(event) ver
+[] li nin başına input checkbox koy, checked olunca li obje içindeki isDone true olacak, local storage kaydetme fonks.nun çağrıabilrsin

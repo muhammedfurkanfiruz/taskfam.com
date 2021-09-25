@@ -11,7 +11,7 @@ function getValueFromInput() {
 
   if (val !== "") {
     var uniq = "id" + new Date().getTime();
-    todoList.push({ id: uniq, text: val });
+    todoList.push({ id: uniq, text: val, isDone: false });
     setLocalStorage();
     let list = document.getElementById("todoList");
     let li = document.createElement("li");
