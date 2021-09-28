@@ -34,6 +34,7 @@ todoInput.addEventListener("keyup", function (event) {
 function setLocalStorage() {
   localStorage.setItem("TaskList", JSON.stringify(todoList)); // setting the data to the local storage
   restartHideFunction()
+  
 }
 
 function getLocalStorage() {
@@ -47,6 +48,8 @@ function getLocalStorage() {
     todoList.forEach(function (todo) {
       html += ` 
             <li class="todo-li" id="${todo.id}">  
+           
+                <input class="form-check-input" id="${todo.id}"  onclick="checkBox(event)"type="checkbox" ${todo.isDone ? 'checked' : ''} id="flexCheckDefault">
                 <span id="text${todo.id}">${todo.text} </span>
                 <input id="${todo.id}" data-access="input${todo.id}" value="${todo.text}" class="form-control d-none inputClass" onKeyUp=updateItem(event)  />  
                 <button onclick="removeItem(event)" id="${todo.id}" class="btn btn-danger todo-btn">Sil</button> 
@@ -62,6 +65,16 @@ function getLocalStorage() {
     document.getElementById("todoList").innerHTML = html;
   }
 }
+function checkBox(event){
+let id = event.target.id
+let gettingId = todoList.findIndex(x => x.id === id);
+todoList[gettingId].isDone = !todoList[gettingId].isDone;
+console.log(todoList[gettingId]);
+setLocalStorage()
+}
+
+
+
 function removeItem(event) {
     let itemId = event.target.id;
     const removeIndex = todoList.findIndex((item) => item.id === itemId); //arrayden silme
