@@ -1,4 +1,5 @@
 var todoList = [];
+var todoCards = [];
 let todoInput = document.getElementById("todoInput");
 let submitBtn = document.getElementById("submitBtn");
 let addULButton = `<button id="addUlButton" class="add-list-btn btn" onclick="addNewUL();">Add a list</button>`;
@@ -6,9 +7,15 @@ let addULButton = `<button id="addUlButton" class="add-list-btn btn" onclick="ad
 let listsCount = document.getElementsByClassName("list").length;
 
 getLocalStorage();
+getCards();
 
-function getValueFromInput() {
+function addTask(e) {
+  let listId = e.target.getAttribute('data-listId'); // listenin genel id'si > erişim için kullancaz.
+  let accessId = "todoInput" + listId;
+  todoInput = document.getElementById(accessId);
+
   let val = todoInput.value;
+
   if (val == "") {
     toastr.warning("Boş ekleme yapılamaz!");
   }
@@ -19,26 +26,28 @@ function getValueFromInput() {
       id: uniq, 
       text: val,
       isDone: false,
-      whichCard: 0
+      whichCard: listId
       });
     setLocalStorage();
-    let list = document.getElementById("todoList");
+    let accessTodoList = "todoList" + listId;
+    let list = document.getElementById(accessTodoList);
     let li = document.createElement("li");
     li.appendChild(document.createTextNode(val));
     list.appendChild(li);
     toastr.success("Ekleme başarılı ! ");
     todoInput.value = ""; //input clear
-    getLocalStorage();
+    let id = e.target.getAttribute('data-listId');
+    getLocalStorage(id);
   }
 }
 
-todoInput.addEventListener("keyup", function (event) {
-  //add todo with enter key
-  event.preventDefault();
-  if (event.key === "Enter") {
-    submitBtn.click();
-  }
-});
+// todoInput.addEventListener("keyup", function (event) {
+//   //add todo with enter key
+//   event.preventDefault();
+//   if (event.key === "Enter") {
+//     submitBtn.click();
+//   }
+// });
 //  var data = [ {'Id' : 0,'text' : 'Alperen', },{  'Id' : 5,'text' : 'Alpiş', }];
 function setLocalStorage() {
   localStorage.setItem("TaskList", JSON.stringify(todoList)); // setting the data to the local storage
@@ -46,32 +55,32 @@ function setLocalStorage() {
   
 }
 
-function getLocalStorage() {
+function getLocalStorage(id) {
   let gettingval = localStorage.getItem("TaskList");
   if (gettingval !== null) {
     let veri = JSON.parse(gettingval);
     todoList = veri;
+    console.log(todoList)
 
     let html = "";
 
     todoList.forEach(function (todo) {
+      console.log("localsotarageden gelen veri şuı kartta" + " "+todo.whichCard)
       html += ` 
             <li class="todo-li" id="${todo.id}">  
-                
                 <input class="check_class" id="${todo.id}"  onclick="checkBox(event)"type="checkbox" ${todo.isDone ? 'checked' : ''} id="flexCheckDefault">
                 <span id="text${todo.id}" class="spn_class">${todo.text}  </span>
                 <input id="${todo.id}" data-access="input${todo.id}" value="${todo.text}" class="form-control d-none inputClass" onKeyUp=updateItem(event)  />  
                 <button onclick="removeItem(event)" id="${todo.id}" class="btn btn-danger todo-btn"><i class="far fa-trash-alt icon"></i></button> 
                 <button id="${todo.id}" data-access="edit${todo.id}" class="btn btn-primary todo-btn" onclick="showEditInput(event)"> <i class="far fa-edit icon " ></i></button>
                 <button id="${todo.id}" data-access="check${todo.id}" onclick="hideInput(event)" type="button" class="btn btn-success d-none todo-btn"><i class="fas fa-check-circle icon"></i></button>
-                </li> `;
+            </li> `;
       // html += "<li id="+todo.id + ">"  +  "<button  id="+todo.id +" + "onclick=showId();>"  + "Id göster" +  "</button>" + todo.text + "</li>";
-      console.log(todoList);
+      // console.log(todoList);
       return html;
     });
 
-    //html = (`<ul>  ${html}  <ul> `);
-    document.getElementById("todoList").innerHTML = html;
+    document.getElementById("todoList0").innerHTML = html;
   }
 }
 
@@ -156,11 +165,44 @@ function addNewUL (){
   target.innerHTML += `
   <div id=${id} class="list">
     <h3 class="list-title">Today</h3>
-    <ul class="list-items" id="todoList"></ul>
-    <input class="form-control form-control-lg inp" id="todoInput" type="text" placeholder="Add a new task " aria-label=".form-control-sm example">
-    <button type="button" id="submitBtn"  onclick="getValueFromInput();" class="btn btn-info">Add</button>
+    <ul class="list-items" id="todoList${id}"></ul>
+    <input class="form-control form-control-lg inp" id="todoInput${id}" type="text" placeholder="Add a new task" aria-label=".form-control-sm example">
+    <button type="button" id="submitBtn${id}" data-listId="${id}" onclick="addTask(event);" class="btn btn-info">Add</button>
   </div>`;
 
   target.innerHTML += addULButton;
+  
+  todoCards.push({id: id})
+
+  localStorage.setItem("TaskCards", JSON.stringify(todoCards)); // setting the data to the local storage
 }
 
+function drawCards(){
+
+  todoCards.forEach(function (card) {
+    let id = card.id;
+
+    document.getElementById("addUlButton").remove();
+  
+    var target = document.querySelector("#lists_container");
+    
+    target.innerHTML += `
+    <div id=${id} class="list">
+      <h3 class="list-title">Today</h3>
+      <ul class="list-items" id="todoList${id}"></ul>
+      <input class="form-control form-control-lg inp" id="todoInput${id}" type="text" placeholder="Add a new task" aria-label=".form-control-sm example">
+      <button type="button" id="submitBtn${id}" data-listId="${id}" onclick="addTask(event);" class="btn btn-info">Add</button>
+    </div>`;
+  
+    target.innerHTML += addULButton;
+  });
+}
+
+function getCards(){
+  let data = JSON.parse(localStorage.getItem("TaskCards")) // setting the data to the local storage
+  if (data !== null) {
+    todoCards = data;
+  }
+
+  drawCards()
+}
