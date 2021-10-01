@@ -48,11 +48,11 @@ function getLocalStorage() {
     todoList.forEach(function (todo) {
       html += ` 
             <li class="todo-li" id="${todo.id}">  
-           
-                <input class="form-check-input" id="${todo.id}"  onclick="checkBox(event)"type="checkbox" ${todo.isDone ? 'checked' : ''} id="flexCheckDefault">
-                <span id="text${todo.id}">${todo.text} </span>
+                
+                <input class="check_class" id="${todo.id}"  onclick="checkBox(event)"type="checkbox" ${todo.isDone ? 'checked' : ''} id="flexCheckDefault">
+                <span id="text${todo.id}" class="spn_class">${todo.text}  </span>
                 <input id="${todo.id}" data-access="input${todo.id}" value="${todo.text}" class="form-control d-none inputClass" onKeyUp=updateItem(event)  />  
-                <button onclick="removeItem(event)" id="${todo.id}" class="btn btn-danger todo-btn">Sil</button> 
+                <button onclick="removeItem(event)" id="${todo.id}" class="btn btn-danger todo-btn"><i class="far fa-trash-alt"></i></button> 
                 <button id="${todo.id}" data-access="edit${todo.id}" class="btn btn-primary todo-btn" onclick="showEditInput(event)"> <i class="far fa-edit icon " ></i></button>
                 <button id="${todo.id}" data-access="check${todo.id}" onclick="hideInput(event)" type="button" class="btn btn-success d-none todo-btn"><i class="fas fa-check-circle icon"></i></button>
                 </li> `;

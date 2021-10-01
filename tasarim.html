@@ -5,8 +5,19 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+  integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!--fontawesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
   <title>To Do</title>
+  
 </head>
 <body>
     <!-- Masthead -->
@@ -72,16 +83,38 @@
 
 		<h3 class="list-title">Tasks to Do</h3>
 
-		<ul class="list-items">
-			<li>Complete mock-up for client website</li>
+		<ul class="list-items" id="todoList">
+	
+   
 		</ul>
-
-		<button class="add-card-btn btn">Add a Task</button>
+        <input class="form-control form-control-lg inp" id="todoInput" type="text" placeholder="Add a new task " aria-label=".form-control-sm example">
+        <button type="button" id="submitBtn"  onclick="getValueFromInput();" class="btn btn-info">Add</button>
+       
+		
 	</div>
 	<button class="add-list-btn btn">Add a list</button>
 
+
+
+
+
 </section>
 <!-- End of lists container -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+crossorigin="anonymous"></script>
+<script src="main.js"></script>
 </body>
 
 <style>
@@ -114,16 +147,28 @@ body {
     background-color: #0079bf;
 }
 
+
+
+
+  
+
+
 .btn {
     display: flex;
     justify-content: center;
     align-items: center;
     font: inherit;
-    background: none;
     border: none;
     color: inherit;
-    padding: 0;
+    padding: 5px;
     cursor: pointer;
+   
+}
+#submitBtn{
+background-color: #fa0;
+}
+.todo-btn i {
+    color: white;
 }
 
 :focus {
@@ -286,6 +331,14 @@ body {
 
 /* Lists */
 
+.spn_class{
+    margin-left: 10px;
+    width: 150px;
+}
+.check_class{
+    
+}
+
 .lists-container::-webkit-scrollbar {
     height: 2.4rem;
 }
@@ -348,7 +401,7 @@ body {
     font-weight: 400;
     line-height: 1.3;
     background-color: #fff;
-    padding: 0.65rem 0.6rem;
+    padding: 1rem 1rem;
     color: #4d4d4d;
     border-bottom: 0.1rem solid #ccc;
     border-radius: 0.3rem;
