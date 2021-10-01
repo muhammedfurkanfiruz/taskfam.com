@@ -133,3 +133,10 @@ function restartHideFunction(){
 }
 
 restartHideFunction();
+
+function addNewUL (){
+  var target = document.querySelector("#lists_container");
+target.innerHTML += '<div class="list"><p>Some text that should be appended...</p></div>';
+
+}
+
