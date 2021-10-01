@@ -20,3 +20,4 @@ inputlara her tuş basıldığında bu function çalışcak.
    bir buton ekle > bu butona da hideInput(event) ver
 [x] li nin başına input checkbox koy, checked olunca li obje içindeki isDone true olacak, local storage kaydetme fonks.nun çağrıabilrsin
 
+[] getLocalStorage fonksyionu içinde her item i satır 68 todo.whichCard değeri ile getElementById("todoList (burası todo.whiccardın idsi olacak") e basacaz
