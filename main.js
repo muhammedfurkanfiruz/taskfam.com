@@ -139,7 +139,13 @@ function addNewUL (){
   document.getElementById("addUlButton").remove();
 
   var target = document.querySelector("#lists_container");
-  target.innerHTML += '<div class="list"><p>Some text that should be appended...</p></div>';
+  target.innerHTML += `
+  <div class="list">
+    <h3 class="list-title">Today</h3>
+    <ul class="list-items" id="todoList"></ul>
+    <input class="form-control form-control-lg inp" id="todoInput" type="text" placeholder="Add a new task " aria-label=".form-control-sm example">
+    <button type="button" id="submitBtn"  onclick="getValueFromInput();" class="btn btn-info">Add</button>
+  </div>`;
 
   target.innerHTML += addULButton;
 }
