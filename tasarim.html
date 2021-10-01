@@ -77,17 +77,15 @@
 <!-- End of board info bar -->
 
 <!-- Lists container -->
-<section class="lists-container">
-    <div id="lists_container">
+<section id="lists_container" class="lists-container">
         <div class="list">
             <h3 class="list-title">Today</h3>
             <ul class="list-items" id="todoList"></ul>
             <input class="form-control form-control-lg inp" id="todoInput" type="text" placeholder="Add a new task " aria-label=".form-control-sm example">
             <button type="button" id="submitBtn"  onclick="getValueFromInput();" class="btn btn-info">Add</button>
         </div>
-    </div>
         <!--add a list buton hep aşağıda kalacak-->
-	<button class="add-list-btn btn" onclick=" addNewUL();">Add a list</button>
+	<button id="addUlButton" class="add-list-btn btn" onclick=" addNewUL();">Add a list</button>
 </section>
 
 <div class="div">

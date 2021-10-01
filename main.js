@@ -1,6 +1,7 @@
 var todoList = [];
 let todoInput = document.getElementById("todoInput");
 let submitBtn = document.getElementById("submitBtn");
+let addULButton = `<button id="addUlButton" class="add-list-btn btn" onclick=" addNewUL();">Add a list</button>`;
 getLocalStorage();
 
 function getValueFromInput() {
@@ -135,8 +136,11 @@ function restartHideFunction(){
 restartHideFunction();
 
 function addNewUL (){
-  var target = document.querySelector("#lists_container");
-target.innerHTML += '<div class="list"><p>Some text that should be appended...</p></div>';
+  document.getElementById("addUlButton").remove();
 
+  var target = document.querySelector("#lists_container");
+  target.innerHTML += '<div class="list"><p>Some text that should be appended...</p></div>';
+
+  target.innerHTML += addULButton;
 }
 
