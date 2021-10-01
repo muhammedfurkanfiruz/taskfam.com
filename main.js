@@ -1,7 +1,10 @@
 var todoList = [];
 let todoInput = document.getElementById("todoInput");
 let submitBtn = document.getElementById("submitBtn");
-let addULButton = `<button id="addUlButton" class="add-list-btn btn" onclick=" addNewUL();">Add a list</button>`;
+let addULButton = `<button id="addUlButton" class="add-list-btn btn" onclick="addNewUL();">Add a list</button>`;
+
+let listsCount = document.getElementsByClassName("list").length;
+
 getLocalStorage();
 
 function getValueFromInput() {
@@ -12,7 +15,12 @@ function getValueFromInput() {
 
   if (val !== "") {
     var uniq = "id" + new Date().getTime();
-    todoList.push({ id: uniq, text: val, isDone: false });
+    todoList.push({ 
+      id: uniq, 
+      text: val,
+      isDone: false,
+      whichCard: 0
+      });
     setLocalStorage();
     let list = document.getElementById("todoList");
     let li = document.createElement("li");
@@ -136,11 +144,17 @@ function restartHideFunction(){
 restartHideFunction();
 
 function addNewUL (){
+  listsCount = document.getElementsByClassName("list").length;
+  console.log(listsCount + " tane list vardı")
+
+  let id = listsCount;
+
   document.getElementById("addUlButton").remove();
 
   var target = document.querySelector("#lists_container");
+  
   target.innerHTML += `
-  <div class="list">
+  <div id=${id} class="list">
     <h3 class="list-title">Today</h3>
     <ul class="list-items" id="todoList"></ul>
     <input class="form-control form-control-lg inp" id="todoInput" type="text" placeholder="Add a new task " aria-label=".form-control-sm example">
