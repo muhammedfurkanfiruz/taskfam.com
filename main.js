@@ -6,8 +6,8 @@ let addULButton = `<button id="addUlButton" class="add-list-btn btn" onclick="ad
 
 let listsCount = document.getElementsByClassName("list").length;
 
-getLocalStorage();
 getCards();
+getLocalStorage();
 
 function addTask(e) {
   let listId = e.target.getAttribute('data-listId'); // listenin genel id'si > erişim için kullancaz.
@@ -31,13 +31,22 @@ function addTask(e) {
     setLocalStorage();
     let accessTodoList = "todoList" + listId;
     let list = document.getElementById(accessTodoList);
-    let li = document.createElement("li");
-    li.appendChild(document.createTextNode(val));
-    list.appendChild(li);
-    toastr.success("Ekleme başarılı ! ");
+    let  html = ` 
+    <li class="todo-li" id="${uniq}">  
+        <input class="check_class" id="${uniq}"  onclick="checkBox(event)"type="checkbox" ${false ? 'checked' : ''} id="flexCheckDefault">
+        <span id="text${uniq}" class="spn_class">${val}  </span>
+        <input id="${uniq}" data-access="input${uniq}" value="${val}" class="form-control d-none inputClass" onKeyUp=updateItem(event)  />  
+        <button onclick="removeItem(event)" id="${uniq}" class="btn btn-danger todo-btn"><i class="far fa-trash-alt icon"></i></button> 
+        <button id="${uniq}" data-access="edit${uniq}" class="btn btn-primary todo-btn" onclick="showEditInput(event)"> <i class="far fa-edit icon " ></i></button>
+        <button id="${uniq}" data-access="check${uniq}" onclick="hideInput(event)" type="button" class="btn btn-success d-none todo-btn"><i class="fas fa-check-circle icon"></i></button>
+    </li> `;
+    // let li = document.createElement("li");
+    //  li.appendChild(document.createTextNode(val));
+    $(`#todoList${listId}`).append(html)
+    // toastr.success("Ekleme başarılı ! ");
     todoInput.value = ""; //input clear
     let id = e.target.getAttribute('data-listId');
-    getLocalStorage(id);
+    // getLocalStorage(id);
   }
 }
 
@@ -65,8 +74,8 @@ function getLocalStorage(id) {
     let html = "";
 
     todoList.forEach(function (todo) {
-      console.log("localsotarageden gelen veri şuı kartta" + " "+todo.whichCard)
-      html += ` 
+      // console.log("localsotarageden gelen veri şuı kartta" + " "+todo.whichCard)
+      html = ` 
             <li class="todo-li" id="${todo.id}">  
                 <input class="check_class" id="${todo.id}"  onclick="checkBox(event)"type="checkbox" ${todo.isDone ? 'checked' : ''} id="flexCheckDefault">
                 <span id="text${todo.id}" class="spn_class">${todo.text}  </span>
@@ -77,10 +86,11 @@ function getLocalStorage(id) {
             </li> `;
       // html += "<li id="+todo.id + ">"  +  "<button  id="+todo.id +" + "onclick=showId();>"  + "Id göster" +  "</button>" + todo.text + "</li>";
       // console.log(todoList);
-      return html;
+      console.log(`#todoList${todo.whichCard}`);
+      $(`#todoList${todo.whichCard}`).append(html)
     });
 
-    document.getElementById("todoList0").innerHTML = html;
+    //document.getElementById("todoList0").innerHTML = html;
   }
 }
 
