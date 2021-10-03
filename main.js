@@ -203,7 +203,12 @@ function drawCards(){
     
     target.innerHTML += `
     <div id=${id} class="list">
-      <h3 class="list-title">Today <i class="far fa-calendar-times deleteicon" onClick="deleteCards(event)" ></i></h3>
+    <div class="card-header">
+  
+    <h3 class="list-title" onClick="editCardHeader(event)">Today </h3>  
+    <i class="far fa-calendar-times deleteicon"  onClick="deleteCards(event)"></i>
+    </div>
+     
      
       <ul class="list-items" id="todoList${id}"></ul>
       <input class="form-control form-control-lg inp" id="todoInput${id}" type="text" placeholder="Add a new task" aria-label=".form-control-sm example">
@@ -225,9 +230,21 @@ function getCards(){
 function deleteCards(event){
 var id= event.target.parentNode.parentNode.id
 console.log(id);
-document.getElementById(id).remove();
+document.getElementById(id).remove(); // removing from html 
+// remove from local storage
+removeCardFromLocalStorage(id)
 }
 
 function editCardHeader(){
   alert("edit card tıklandı")
+}
+
+function removeCardFromLocalStorage(id) {
+  let itemId = id;
+  console.log(id);
+  const removeIndex = todoCards.findIndex((item) => item.id === itemId); //arrayden silme
+  todoCards.splice(removeIndex, 1);
+   //html'den silme
+  
+   localStorage.setItem("TaskCards", JSON.stringify(todoCards));
 }
