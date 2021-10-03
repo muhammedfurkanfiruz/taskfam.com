@@ -23,5 +23,13 @@ inputlara her tuş basıldığında bu function çalışcak.
 [x] getLocalStorage fonksyionu içinde her item i satır 68 todo.whichCard değeri ile getElementById("todoList (burası todo.whiccardın idsi olacak") e basacaz
 
 !!!! çalımşmaya başlamadan önce localstoregeti temizle
-[] kartın sağ üstüne fontawesome çarpı butonu koy > hover edince kırmızı olsun HINT: 
-[] o butona event koy içine event yolla, her tıklandığında prompt Emin misiniz ? 
+[x] kartın sağ üstüne fontawesome çarpı butonu koy > hover edince kırmızı olsun HINT: 
+[x] o butona event koy içine event yolla, her tıklandığında prompt Emin misiniz ? 
+
+🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
+[] enter'a basınca  task ekleme çalışsın (satır: 53)
+[] inputu göster, h3 ü sakla
+   showEditInput
+   hideInput fonksyionlarının aynısından aşağıda oluşturup adlarını değişip, içini buna göre modofiye etmenlazım. 
+   ilgili html'lerin data-attributenue ihtiyacın varsa onları da modifiye etmen lazım
+🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀

@@ -122,15 +122,15 @@ function updateItem(event) {
 }
 
 function showEditInput(event){
-let id =  event.target.id;
-let spn = document.getElementById('text'+id)
-spn.style.display= "none";
-let node = document.querySelector(`[data-access="input${id}"]`);
-node.classList.remove('d-none');
-let edit = document.querySelector(`[data-access="edit${id}"]`);
-edit.style.display= "none";
-let check =document.querySelector(`[data-access="check${id}"]`);
-check.classList.remove('d-none');
+  let id =  event.target.id;
+  let spn = document.getElementById('text'+id)
+  spn.style.display= "none";
+  let node = document.querySelector(`[data-access="input${id}"]`);
+  node.classList.remove('d-none');
+  let edit = document.querySelector(`[data-access="edit${id}"]`);
+  edit.style.display= "none";
+  let check =document.querySelector(`[data-access="check${id}"]`);
+  check.classList.remove('d-none');
 }
 
 function hideInput(event){
@@ -174,13 +174,11 @@ function addNewCard (){
   
   target.innerHTML += `
   <div  id=${id} class="list">
-  <div class="card-header">
-  
-  <h3 class="list-title" onClick="editCardHeader(event)">Today </h3>  
-  <i class="far fa-calendar-times deleteicon"  onClick="deleteCards(event)"></i>
-  </div>
-  
-  
+    <div class="card-header">
+      <h3 id="text${id}" class="list-title" onClick="editCardHeader(event)">New Card</h3>  
+      <input id="${id}" data-access="input${id}" value="New Card" class="form-control d-none inputClass" onKeyUp="updateCardHeader(event)" />  
+      <i class="far fa-calendar-times deleteicon"  onClick="deleteCards(event)"></i>
+    </div>
   <ul class="list-items" id="todoList${id}"></ul>
   <input class="form-control form-control-lg inp" id="todoInput${id}" type="text" placeholder="Add a new task" aria-label=".form-control-sm example">
   <button type="button" id="submitBtn${id}" data-listId="${id}" onclick="addTask(event);" class="btn btn-info">Add</button>
@@ -188,7 +186,10 @@ function addNewCard (){
   
   target.innerHTML += addULButton;
   
-  todoCards.push({id: id})
+  todoCards.push({
+    id: id,
+    text: "New Card" 
+  })
 
   localStorage.setItem("TaskCards", JSON.stringify(todoCards)); // setting the data to the local storage
 }
@@ -196,6 +197,7 @@ function addNewCard (){
 function drawCards(){
   todoCards.forEach(function (card) {
     let id = card.id;
+    let text = card.text;
 
     document.getElementById("addUlButton").remove();
   
@@ -205,10 +207,10 @@ function drawCards(){
     <div id=${id} class="list">
     <div class="card-header">
   
-    <h3 class="list-title" onClick="editCardHeader(event)">Today </h3>  
+    <h3 id="text${id}" class="list-title" onClick="editCardHeader(event)">${text}</h3>  
+    <input id="${id}" data-access="input${id}" value="${text}" class="form-control d-none inputClass" onKeyUp="updateCardHeader(event)"/>  
     <i class="far fa-calendar-times deleteicon"  onClick="deleteCards(event)"></i>
     </div>
-     
      
       <ul class="list-items" id="todoList${id}"></ul>
       <input class="form-control form-control-lg inp" id="todoInput${id}" type="text" placeholder="Add a new task" aria-label=".form-control-sm example">
@@ -236,7 +238,10 @@ removeCardFromLocalStorage(id)
 }
 
 function editCardHeader(){
-  alert("edit card tıklandı")
+  alert("edit card tıklandı") // inputu göster, h3 ü sakla
+  //showEditInput
+  //hideInput fonksyionlarının aynısından aşağıda oluşturup adlarını değişip, içini buna göre modofiye etmenlazım. 
+  //ilgili html'lerin data-attributenue ihtiyacın varsa onları da modifiye etmen lazım
 }
 
 function removeCardFromLocalStorage(id) {
@@ -247,4 +252,21 @@ function removeCardFromLocalStorage(id) {
    //html'den silme
   
    localStorage.setItem("TaskCards", JSON.stringify(todoCards));
+}
+
+function updateCardHeader(event) {
+  let id = event.target.id;
+  let achived = document.getElementById("text" + id);
+  let updated = event.target.value; // inputtan gelen veri
+  achived.innerText = updated;
+  
+  console.log("cardid",id);
+
+  // let cardindex = todoCards.findIndex((item) => item.id === id); // arrayi burada güncelledik
+  let cardindex = id - 1;
+
+  console.log("cardindex", cardindex)
+
+  todoCards[cardindex].text = updated;
+  localStorage.setItem("TaskCards", JSON.stringify(todoCards));
 }
