@@ -18,6 +18,24 @@ body {
 .card-header{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+}
+.deleteicon{
+    font-size: 18px;
+    color: rgb(24, 125, 207);
+
+    
+}
+.deleteicon:hover{
+    color: red;
+}
+.deletehtmlicon{
+    font-size: 18px;
+    color: rgb(24, 125, 207);
+}
+.deletehtmlicon:hover{
+    color: red;
 }
 .btn {
     display: flex;

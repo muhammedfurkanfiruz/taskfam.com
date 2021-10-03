@@ -173,13 +173,19 @@ function addNewCard (){
   var target = document.querySelector("#lists_container");
   
   target.innerHTML += `
-  <div onClick="editCardHeader(event)" id=${id} class="list">
-    <h3 class="list-title">Today</h3>
-    <ul class="list-items" id="todoList${id}"></ul>
-    <input class="form-control form-control-lg inp" id="todoInput${id}" type="text" placeholder="Add a new task" aria-label=".form-control-sm example">
-    <button type="button" id="submitBtn${id}" data-listId="${id}" onclick="addTask(event);" class="btn btn-info">Add</button>
+  <div  id=${id} class="list">
+  <div class="card-header">
+  
+  <h3 class="list-title" onClick="editCardHeader(event)">Today </h3>  
+  <i class="far fa-calendar-times deleteicon"  onClick="deleteCards(event)"></i>
+  </div>
+  
+  
+  <ul class="list-items" id="todoList${id}"></ul>
+  <input class="form-control form-control-lg inp" id="todoInput${id}" type="text" placeholder="Add a new task" aria-label=".form-control-sm example">
+  <button type="button" id="submitBtn${id}" data-listId="${id}" onclick="addTask(event);" class="btn btn-info">Add</button>
   </div>`;
-
+  
   target.innerHTML += addULButton;
   
   todoCards.push({id: id})
@@ -197,7 +203,8 @@ function drawCards(){
     
     target.innerHTML += `
     <div id=${id} class="list">
-      <h3 class="list-title">Today</h3>
+      <h3 class="list-title">Today <i class="far fa-calendar-times deleteicon" onClick="deleteCards(event)" ></i></h3>
+     
       <ul class="list-items" id="todoList${id}"></ul>
       <input class="form-control form-control-lg inp" id="todoInput${id}" type="text" placeholder="Add a new task" aria-label=".form-control-sm example">
       <button type="button" id="submitBtn${id}" data-listId="${id}" onclick="addTask(event);" class="btn btn-info">Add</button>
@@ -215,7 +222,11 @@ function getCards(){
 
   drawCards()
 }
-
+function deleteCards(event){
+var id= event.target.parentNode.parentNode.id
+console.log(id);
+document.getElementById(id).remove();
+}
 
 function editCardHeader(){
   alert("edit card tıklandı")
