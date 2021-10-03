@@ -78,14 +78,16 @@
 
 <!-- Lists container -->
 <section id="lists_container" class="lists-container">
-        <div id="0" class="list">
+        <div id="0" onclick="editCardHeader(event)" class="list">
+          <div class="card-header">
             <h3 class="list-title">Today</h3>
+          </div>
             <ul class="list-items" id="todoList0"></ul>
             <input class="form-control form-control-lg inp" id="todoInput0" type="text" placeholder="Add a new task " aria-label=".form-control-sm example">
             <button type="button" id="submitBtn" data-listId="0" onclick="addTask(event);" class="btn btn-info">Add</button>
         </div>
         <!--add a list buton hep aşağıda kalacak-->
-        <button id="addUlButton" class="add-list-btn btn" onclick=" addNewUL();">Add a list</button>
+        <button id="addUlButton" class="add-list-btn btn" onclick=" addNewCard();">Add a list</button>
 </section>
 
 <div class="div">

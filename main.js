@@ -2,7 +2,7 @@ var todoList = [];
 var todoCards = [];
 let todoInput = document.getElementById("todoInput");
 let submitBtn = document.getElementById("submitBtn");
-let addULButton = `<button id="addUlButton" class="add-list-btn btn" onclick="addNewUL();">Add a list</button>`;
+let addULButton = `<button id="addUlButton" class="add-list-btn btn" onclick="addNewCard();">Add a list</button>`;
 
 let listsCount = document.getElementsByClassName("list").length;
 
@@ -162,7 +162,7 @@ function restartHideFunction(){
 
 restartHideFunction();
 
-function addNewUL (){
+function addNewCard (){
   listsCount = document.getElementsByClassName("list").length;
   console.log(listsCount + " tane list vardı")
 
@@ -173,7 +173,7 @@ function addNewUL (){
   var target = document.querySelector("#lists_container");
   
   target.innerHTML += `
-  <div id=${id} class="list">
+  <div onClick="editCardHeader(event)" id=${id} class="list">
     <h3 class="list-title">Today</h3>
     <ul class="list-items" id="todoList${id}"></ul>
     <input class="form-control form-control-lg inp" id="todoInput${id}" type="text" placeholder="Add a new task" aria-label=".form-control-sm example">
@@ -188,7 +188,6 @@ function addNewUL (){
 }
 
 function drawCards(){
-
   todoCards.forEach(function (card) {
     let id = card.id;
 
@@ -215,4 +214,9 @@ function getCards(){
   }
 
   drawCards()
+}
+
+
+function editCardHeader(){
+  alert("edit card tıklandı")
 }

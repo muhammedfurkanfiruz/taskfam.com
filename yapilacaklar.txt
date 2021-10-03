@@ -20,4 +20,8 @@ inputlara her tuş basıldığında bu function çalışcak.
    bir buton ekle > bu butona da hideInput(event) ver
 [x] li nin başına input checkbox koy, checked olunca li obje içindeki isDone true olacak, local storage kaydetme fonks.nun çağrıabilrsin
 
-[] getLocalStorage fonksyionu içinde her item i satır 68 todo.whichCard değeri ile getElementById("todoList (burası todo.whiccardın idsi olacak") e basacaz
+[x] getLocalStorage fonksyionu içinde her item i satır 68 todo.whichCard değeri ile getElementById("todoList (burası todo.whiccardın idsi olacak") e basacaz
+
+!!!! çalımşmaya başlamadan önce localstoregeti temizle
+[] kartın sağ üstüne fontawesome çarpı butonu koy > hover edince kırmızı olsun HINT: 
+[] o butona event koy içine event yolla, her tıklandığında prompt Emin misiniz ? 

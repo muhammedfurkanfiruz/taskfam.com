@@ -15,8 +15,10 @@ body {
     flex-direction: column;
     background-color: #0079bf;
 }
-
-
+.card-header{
+    display: flex;
+    justify-content: space-between;
+}
 .btn {
     display: flex;
     justify-content: center;
