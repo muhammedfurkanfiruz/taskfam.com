@@ -6,8 +6,10 @@ let addULButton = `<button id="addUlButton" class="add-list-btn btn" onclick="ad
 
 let listsCount = document.getElementsByClassName("list").length;
 
+let count = document.getElementsByClassName("list").length;
 getCards();
 getLocalStorage();
+enter();
 
 function addTask(e) {
   let listId = e.target.getAttribute('data-listId'); // listenin genel id'si > erişim için kullancaz.
@@ -49,15 +51,8 @@ function addTask(e) {
     // getLocalStorage(id);
   }
 }
+ 
 
-// todoInput.addEventListener("keyup", function (event) {
-//   //add todo with enter key
-//   event.preventDefault();
-//   if (event.key === "Enter") {
-//     submitBtn.click();
-//   }
-// });
-//  var data = [ {'Id' : 0,'text' : 'Alperen', },{  'Id' : 5,'text' : 'Alpiş', }];
 function setLocalStorage() {
   localStorage.setItem("TaskList", JSON.stringify(todoList)); // setting the data to the local storage
   restartHideFunction()
@@ -162,6 +157,8 @@ function restartHideFunction(){
 
 restartHideFunction();
 
+
+
 function addNewCard (){
   listsCount = document.getElementsByClassName("list").length;
   console.log(listsCount + " tane list vardı")
@@ -175,7 +172,7 @@ function addNewCard (){
   target.innerHTML += `
   <div  id=${id} class="list">
     <div class="card-header">
-      <h3 id="text${id}" class="list-title" onClick="editCardHeader(event)">New Card</h3>  
+      <h3 id="text${id}" class="list-title" onClick="editCardHeader(event) ">New Card</h3>  
       <input id="${id}" data-access="input${id}" value="New Card" class="form-control d-none inputClass" onKeyUp="updateCardHeader(event)" />  
       <i class="far fa-calendar-times deleteicon"  onClick="deleteCards(event)"></i>
     </div>
@@ -191,9 +188,10 @@ function addNewCard (){
     text: "New Card" 
   })
 
-  localStorage.setItem("TaskCards", JSON.stringify(todoCards)); // setting the data to the local storage
-}
 
+  localStorage.setItem("TaskCards", JSON.stringify(todoCards)); // setting the data to the local storage
+  count+=1;
+}
 function drawCards(){
   todoCards.forEach(function (card) {
     let id = card.id;
@@ -218,8 +216,35 @@ function drawCards(){
     </div>`;
   
     target.innerHTML += addULButton;
+ 
   });
+   listsCount = document.getElementsByClassName("list").length;
+
+ count = document.getElementsByClassName("list").length;
 }
+
+
+function enter() {
+  for(let i = 0; i<count; i++ ){
+    console.log(i);
+    inputIDs = document.getElementById(`todoInput${i}`);
+console.log(inputIDs);
+inputIDs.addEventListener("keyup", function (event) {
+  //add todo with enter key
+  event.preventDefault();
+  if (event.key === "Enter") {
+    console.log('çalıştım');
+    submitBtn = document.getElementById("submitBtn" + i);
+    submitBtn.click();
+  }
+})
+
+  }
+ 
+
+
+}
+
 
 function getCards(){
   let data = JSON.parse(localStorage.getItem("TaskCards")) // setting the data to the local storage
@@ -269,4 +294,11 @@ function updateCardHeader(event) {
 
   todoCards[cardindex].text = updated;
   localStorage.setItem("TaskCards", JSON.stringify(todoCards));
+
+  
+
 }
+
+
+
+

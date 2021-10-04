@@ -27,7 +27,7 @@ inputlara her tuş basıldığında bu function çalışcak.
 [x] o butona event koy içine event yolla, her tıklandığında prompt Emin misiniz ? 
 
 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
-[] enter'a basınca  task ekleme çalışsın (satır: 53)
+[x] enter'a basınca  task ekleme çalışsın (satır: 53)
 [] inputu göster, h3 ü sakla
    showEditInput
    hideInput fonksyionlarının aynısından aşağıda oluşturup adlarını değişip, içini buna göre modofiye etmenlazım. 
