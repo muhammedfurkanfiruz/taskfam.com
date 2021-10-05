@@ -51,12 +51,10 @@ function addTask(e) {
     // getLocalStorage(id);
   }
 }
- 
 
 function setLocalStorage() {
   localStorage.setItem("TaskList", JSON.stringify(todoList)); // setting the data to the local storage
   restartHideFunction()
-  
 }
 
 function getLocalStorage(id) {
@@ -64,8 +62,6 @@ function getLocalStorage(id) {
   if (gettingval !== null) {
     let veri = JSON.parse(gettingval);
     todoList = veri;
-    console.log(todoList)
-
     let html = "";
 
     todoList.forEach(function (todo) {
@@ -81,10 +77,8 @@ function getLocalStorage(id) {
             </li> `;
       // html += "<li id="+todo.id + ">"  +  "<button  id="+todo.id +" + "onclick=showId();>"  + "Id göster" +  "</button>" + todo.text + "</li>";
       // console.log(todoList);
-      console.log(`#todoList${todo.whichCard}`);
       $(`#todoList${todo.whichCard}`).append(html)
     });
-
     //document.getElementById("todoList0").innerHTML = html;
   }
 }
@@ -93,7 +87,6 @@ function checkBox(event){
 let id = event.target.id
 let gettingId = todoList.findIndex(x => x.id === id);
 todoList[gettingId].isDone = !todoList[gettingId].isDone;
-console.log(todoList[gettingId]);
 setLocalStorage()
 }
 
@@ -108,7 +101,6 @@ function removeItem(event) {
 function updateItem(event) {
   let id = event.target.id;
   let achived = document.getElementById("text" + id);
-  console.log(id);
   let updated = event.target.value; // inputtan gelen veri
   achived.innerText = updated;
   const arrayItem = todoList.findIndex((item) => item.id === id); // arrayi burada güncelledik
@@ -130,9 +122,7 @@ function showEditInput(event){
 
 function hideInput(event){
   let id =  event.target.id;
-  console.log(id);
   let spn = document.getElementById('text'+id)
-  console.log(spn);
   let node = document.querySelector(`[data-access="input${id}"]`);
   spn.style.display= "block";
   node.classList.add('d-none');
@@ -158,11 +148,8 @@ function restartHideFunction(){
 restartHideFunction();
 
 
-
 function addNewCard (){
   listsCount = document.getElementsByClassName("list").length;
-  console.log(listsCount + " tane list vardı")
-
   let id = listsCount;
 
   document.getElementById("addUlButton").remove();
@@ -191,7 +178,9 @@ function addNewCard (){
 
   localStorage.setItem("TaskCards", JSON.stringify(todoCards)); // setting the data to the local storage
   count+=1;
+  enter();
 }
+
 function drawCards(){
   todoCards.forEach(function (card) {
     let id = card.id;
@@ -223,17 +212,14 @@ function drawCards(){
  count = document.getElementsByClassName("list").length;
 }
 
-
 function enter() {
+  console.log("enter çalışıtı")
   for(let i = 0; i<count; i++ ){
-    console.log(i);
     inputIDs = document.getElementById(`todoInput${i}`);
-console.log(inputIDs);
 inputIDs.addEventListener("keyup", function (event) {
   //add todo with enter key
   event.preventDefault();
   if (event.key === "Enter") {
-    console.log('çalıştım');
     submitBtn = document.getElementById("submitBtn" + i);
     submitBtn.click();
   }
@@ -245,7 +231,6 @@ inputIDs.addEventListener("keyup", function (event) {
 
 }
 
-
 function getCards(){
   let data = JSON.parse(localStorage.getItem("TaskCards")) // setting the data to the local storage
   if (data !== null) {
@@ -254,24 +239,27 @@ function getCards(){
 
   drawCards()
 }
+
 function deleteCards(event){
-var id= event.target.parentNode.parentNode.id
-console.log(id);
-document.getElementById(id).remove(); // removing from html 
-// remove from local storage
+
+let id= event.target.parentNode.parentNode.id
+
+document.getElementById(id).remove(); 
 removeCardFromLocalStorage(id)
+
+for(todo in todoList){
+  let removeIndex = todoList.findIndex((item) => item.whichCard === id);
+  todoList.splice(removeIndex, 1);
+  setLocalStorage();
+}
 }
 
-function editCardHeader(){
-  alert("edit card tıklandı") // inputu göster, h3 ü sakla
-  //showEditInput
-  //hideInput fonksyionlarının aynısından aşağıda oluşturup adlarını değişip, içini buna göre modofiye etmenlazım. 
-  //ilgili html'lerin data-attributenue ihtiyacın varsa onları da modifiye etmen lazım
+function editCardHeader(e){
+  console.log(e.target)
 }
 
 function removeCardFromLocalStorage(id) {
   let itemId = id;
-  console.log(id);
   const removeIndex = todoCards.findIndex((item) => item.id === itemId); //arrayden silme
   todoCards.splice(removeIndex, 1);
    //html'den silme
@@ -285,12 +273,8 @@ function updateCardHeader(event) {
   let updated = event.target.value; // inputtan gelen veri
   achived.innerText = updated;
   
-  console.log("cardid",id);
-
   // let cardindex = todoCards.findIndex((item) => item.id === id); // arrayi burada güncelledik
   let cardindex = id - 1;
-
-  console.log("cardindex", cardindex)
 
   todoCards[cardindex].text = updated;
   localStorage.setItem("TaskCards", JSON.stringify(todoCards));
