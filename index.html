@@ -1,15 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <!--toastr-->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
     integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -17,21 +12,82 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
     integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>Hello, world!</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
+  <title>TaskFam - Todo List, Planner, Student Agenda, Weekly Planner, To do</title>
+  <meta name="description" content="Todo list, accessible and easy application to study. For students, weekly planner.">
+  <meta name="keywords"
+    content="zinciri kırma, pomodoro sayacı, pomodoro tekniği, tyt ders çalışma programı 2021, online zamanlayıcı, kronometre, yks geri sayım 2021, 2021 yks ders çalışma programı, lgs ders çalışma programı 2021, 2021 zinciri kırma, zinciri kırma pdf, EBA konu, eba giriş, eba ders">
+  <meta name="author" content="Muhammed Furkan Firuz">
 </head>
 
 <body>
-  <h1>Hello, world!</h1>
-  <input class="form-control" id="todoInput"></input>
-  <button type="button" class="btn btn-warning" onclick="getValueFromInput();" id="submitBtn"> Add </button>
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="boards-menu">
+      <i>"Time is not the main thing. It is the only thing..."<quote>Miles Davis</quote></i>
+      <div class="board-search">
 
-  <div id="nameId">
+
+      </div>
+    </div>
+    <div class="logo">
+      <h1><i class="fab fa-trello logo-icon" aria-hidden="true"></i>TaskFam</h1>
+    </div>
+    <div class="user-settings">
+
+      <button class="user-settings-btn btn" aria-label="Create">
+        <i class="fas fa-plus" style="transform: rotate(45deg);" aria-hidden="true"></i>
+      </button>
+
+
+  </header>
+  <!-- End of masthead -->
+
+  <!-- Board info bar -->
+  <section class="board-info-bar">
+
+    <div class="board-controls">
+
+      <button class="board-title btn">
+
+      </button>
+
+      <button class="star-btn btn" aria-label="Star Board">
+
+      </button>
+
+
+
+
+    </div>
+
+
+  </section>
+  <!-- End of board info bar -->
+
+  <!-- Lists container -->
+  <section id="lists_container" class="lists-container">
+    <div id="0" class="list">
+      <div class="card-header">
+        <h3 class="list-title">Today</h3>
+        <!-- <i class="far fa-calendar-times deletehtmlicon" onClick="deleteCards(event)" ></i> -->
+      </div>
+      <ul class="list-items" id="todoList0"></ul>
+      <input class="form-control form-control-lg inp" id="todoInput0" type="text" placeholder="Add a new task "
+        aria-label=".form-control-sm example">
+      <button type="button" id="submitBtn0" data-listId="0" onclick="addTask(event);" class="btn btn-info">Add</button>
+    </div>
+    <!--add a list buton hep aşağıda kalacak-->
+    <button id="addUlButton" class="add-list-btn btn" onclick=" addNewCard();">Add a list</button>
+  </section>
+
+  <div class="div">
   </div>
-  <ul id="todoList">
-  </ul>
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+  <!-- End of lists container -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
@@ -46,8 +102,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-  <script src="main.js"> </script>
-
+  <script src="main.js"></script>
 </body>
 
 </html>
