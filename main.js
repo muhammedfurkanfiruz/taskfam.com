@@ -255,7 +255,12 @@ for(todo in todoList){
 }
 
 function editCardHeader(e){
-  console.log(e.target)
+  let id = e.target.parentNode.parentNode.id;
+  let textId = e.target.id;
+  document.getElementById(textId).classList.add("d-none")
+
+  let input = document.querySelector(`[data-access="input${id}"]`);
+  input.classList.remove("d-none");
 }
 
 function removeCardFromLocalStorage(id) {
@@ -278,11 +283,16 @@ function updateCardHeader(event) {
 
   todoCards[cardindex].text = updated;
   localStorage.setItem("TaskCards", JSON.stringify(todoCards));
-
-  
-
 }
 
+$(window).click(function() {
+  $(".list-title").removeClass("d-none");
+  $(".inputClass").addClass("d-none");
+});
+
+$('.list').click(function(event){
+  event.stopPropagation();
+});
 
 
 
