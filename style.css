@@ -48,16 +48,14 @@ body {
     cursor: pointer;
    
 }
-#submitBtn{
+.btn-info{
 background-color: #fa0;
 }
 .todo-btn i {
     color: white;
 }
 
-:focus {
-    outline-color: #fa0;
-}
+
 
 /* Masthead */
 
@@ -77,12 +75,13 @@ background-color: #fa0;
 }
 
 .masthead .btn:hover {
-    background-color: #3385b5;
+    /* background-color: #3385b5;     */
 }
 
-.boards-menu {
-    display: flex;
-    flex-shrink: 0;
+
+.boards-menu i {
+    color: white;
+    font-size: 1.5rem;
 }
 
 .boards-btn {
@@ -93,6 +92,13 @@ background-color: #fa0;
     margin-right: 0.8rem;
     padding: 0.6rem 0.8rem;
 }
+.btn-info:hover{
+    background-color: #fa0;
+}
+.btn-info:not(:disabled):not(.disabled).active, .btn-info:not(:disabled):not(.disabled):active, .show>.btn-info.dropdown-toggle{
+    background-color: #fa0;
+}
+
 
 .boards-btn-icon {
     font-size: 1.7rem;
@@ -139,7 +145,12 @@ background-color: #fa0;
     white-space: nowrap;
     cursor: pointer;
 }
-
+#toast-container > .toast-warning{
+    background-color: rgb(255, 167, 2);
+}
+#toast-container > .toast-success{
+    background-color: rgb(5, 250, 5);
+}
 .logo:hover {
     color: rgba(255, 255, 255, 0.8);
 }
@@ -361,8 +372,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
 
     .boards-menu {
         display: grid;
-        grid-template-columns: 9rem 18rem;
-        grid-column-gap: 0.8rem;
+        
     }
 
     .user-settings {

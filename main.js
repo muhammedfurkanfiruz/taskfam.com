@@ -45,7 +45,7 @@ function addTask(e) {
     // let li = document.createElement("li");
     //  li.appendChild(document.createTextNode(val));
     $(`#todoList${listId}`).append(html)
-    // toastr.success("Ekleme başarılı ! ");
+    toastr.success("Ekleme başarılı ! ");
     todoInput.value = ""; //input clear
     let id = e.target.getAttribute('data-listId');
     // getLocalStorage(id);
