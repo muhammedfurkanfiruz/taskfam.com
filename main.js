@@ -160,7 +160,7 @@ function addNewCard (){
   <div  id=${id} class="list">
     <div class="card-header">
       <h3 id="text${id}" class="list-title" onClick="editCardHeader(event) ">New Card</h3>  
-      <input id="${id}" data-access="input${id}" value="New Card" class="form-control d-none inputClass" onKeyUp="updateCardHeader(event)" />  
+      <input id="${id}" data-access="input${id}" value="New Card" class="form-control d-none inputClass inputClassOutside" onKeyUp="updateCardHeader(event)" />  
       <i class="far fa-calendar-times deleteicon"  onClick="deleteCards(event)"></i>
     </div>
   <ul class="list-items" id="todoList${id}"></ul>
@@ -287,7 +287,7 @@ function updateCardHeader(event) {
 
 $(window).click(function() {
   $(".list-title").removeClass("d-none");
-  $(".inputClass").addClass("d-none");
+  $(".inputClassOutside").addClass("d-none");
 });
 
 $('.list').click(function(event){
