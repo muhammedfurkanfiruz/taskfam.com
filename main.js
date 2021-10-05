@@ -213,7 +213,6 @@ function drawCards(){
 }
 
 function enter() {
-  console.log("enter çalışıtı")
   for(let i = 0; i<count; i++ ){
     inputIDs = document.getElementById(`todoInput${i}`);
 inputIDs.addEventListener("keyup", function (event) {
